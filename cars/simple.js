@@ -106,7 +106,7 @@ function specsTable() {
                             }, //Steering end bracket         
             }; // main bracket
 
-            var manual = {"Dimensions & Capacity": {"Seating Capacity": "4 seats",
+     var manual = {"Dimensions & Capacity": {"Seating Capacity": "4 seats",
                                                   "Fuel Tank Capacity (litres)" : "50 L",
                                                   "Wheel Base": "2570 mm",
                                                   "Front Tread": "1520 mm",

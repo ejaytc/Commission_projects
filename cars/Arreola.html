@@ -1,0 +1,386 @@
+<!-- Source of data: 
+ https://www.zigwheels.ph/new-cars/toyota/86-2012-2016/colors
+ https://www.motortrend.com/cars/toyota/86/2017/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Cars
+    </title>
+    <style>
+        html {
+             scroll-behavior: smooth;
+             }
+        .header {
+                    background-color: #e64900;
+                    position: fixed;
+                    width: 100%;
+                    height: 50px;
+                    text-align: left;
+                    font-size: 30px;
+                    color: #ffffff;
+                    transform: translate(0%, -10%);
+                }
+        .footer {
+                    background-color: #e64900;
+                    position: fixed;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 20px;
+                    text-align: top;
+                    font-size: 15px;
+                    color: #ffffff;
+                    transform: translate(0%, 30%);
+                }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+    
+        body {
+              background: #e4d8b2;
+             }
+    
+        
+        .main_container {    
+                        width: 50%;
+                        height: auto;
+                        overflow: scroll;
+                        margin-left: auto;
+                        margin-right: auto;
+                        padding-top: 3%;
+                        border: 1px solid #fff;
+                        background-color: #ffffff;
+                    }
+
+        .button_container {    
+                        background-color: #e4d8b2;
+                        position: fixed;
+                        margin-left: 80%;
+                        left: 100px;
+                        bottom: 5%;
+                        width: 10%;
+                        height: 10%;
+                        font-size: 15px;
+                        color: #ffffff;
+                        transform: translate(0%, 30%);
+                    }
+    
+        p {
+            color: #d0e4f5;
+            text-transform: capitalize;
+          }
+    
+        img {   
+                width: 100%;
+                height: 400px;
+                padding-left: 10px;
+                object-fit: fill;
+                
+            }
+    
+        .colors {
+                    display: flex;
+                }
+    
+        span {
+                height: 50px;
+                padding: 15px;
+                text-align: center;
+                color: #3a210a;
+                width: 50px;
+                border: 2px solid #ffffff;
+                margin: 2px;
+                cursor: pointer;
+             }
+    
+        .black {
+            background: #000000;
+        }
+    
+        .blue {
+            background: #0660aa;
+        }
+    
+        .silver {
+            background: #cccccc;
+        }
+    
+        .orange {
+            background: #f17a0b;
+        }
+    
+        .gray {
+            background: #353333;
+        }
+    
+        .red {
+            background: #eb2c26;
+
+        }
+
+        .brown {
+            background: #ac5726;
+
+        }
+        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            padding-left: 10px;
+            width: 100%;
+        }
+
+        td, th {
+            width: 50%;
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        #totop {
+                display: none;    
+                position: fixed;
+                bottom: 20px;
+                right: 30px;
+                z-index: 99;
+                font-size: 18px;
+                border: none;
+                outline: none;
+                background-color: #ff7c02;
+                color: white;
+                cursor: pointer;
+                padding: 15px;
+                border-radius: 100%;
+        }
+        #totop:hover {
+                background-color: #e64900;
+                }
+
+        #login_button {
+                position: fixed;
+                bottom: 10px;
+                right: 30px;
+                height: 25px;
+                width: 60px;
+                z-index: 99;
+                font-size: 20px;
+                border: none;
+                outline: none;
+                background-color:  #4CAF50;
+                color: white;
+                cursor: pointer;
+                border-radius: 10%;
+        }
+
+        #login_button:hover {
+            background-color: #f38f31;
+        }
+        
+        /* for modal style */
+        #user, #pass, #email {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        #submit, #signup {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #submit:hover, #signup:hover {
+            opacity: 0.8;
+        }
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            bottom: 20px;
+            position: relative;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; 
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 1880px;
+            overflow: hidden;
+            
+            background-color: #000000; 
+            background-color: #00000066; 
+            padding-top: 5%;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0)} 
+        to {-webkit-transform: scale(1)}
+        }
+        
+        @keyframes animatezoom {
+            from {transform: scale(0)} 
+            to {transform: scale(1)}
+        }
+    </style>
+</head>
+
+<body onload="specsTable()">
+    <div class="header">
+        <header>
+            <h2>Car 86 </h2>
+            <div class="container">
+                <button onclick="loginModal()" id="login_button" title="Login/Signup">Login</button>
+            </div>
+        </header>
+    </div>
+    <!-- Login container -->
+    <div id="login" class="modal">
+  
+        <form class="modal-content animate" method="post">
+          <div class="imgcontainer">
+            <span onclick="loginModal()" class="close" title="Close Modal">&times;</span>
+          </div>
+      
+          <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" id = "user" required>
+      
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id = "pass" required>
+              
+            <button id="submit" type="submit">Login</button>
+            <button type="submit" id="signup" onclick="signupModal()">Signup</button>
+          </div>
+        </form>
+    </div>
+
+    <!-- Signup container-->
+    <div id="signup_modal" class="modal">
+  
+        <form class="modal-content animate" method="post">
+          <div class="imgcontainer">
+            <span onclick="signupModal()" class="close" title="Close Modal">&times;</span>
+          </div>
+      
+          <div class="container">
+            <label for="psw"><b>Email</b></label>
+            <input type="email" placeholder="Enter Email" name="email" id = "email" required>
+
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" id = "user" required>
+      
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id = "pass" required>
+            <button id="signup">Register</button>
+            <button id="submit" type="submit" onclick="loginModal()">Login</button>
+          </div>
+        </form>
+    </div>
+    
+    <!-- Main Page container -->
+    <div class="main_container">
+        <div id='name_container'>Crystal Black Silica</div>
+        <img id="car-img" src="./images/car7.jpg" />
+        <div class="colors">
+            <span class="black" id="images/car7.jpg" onclick="change(this)">1</span>
+            <span class="blue" id="images/car6.jpg" onclick="change(this)">2</span>
+            <span class="silver" id="images/car5.jpg" onclick="change(this)">3</span>
+            <span class="orange" id="images/car4.jpg" onclick="change(this)">4</span>
+            <span class="gray" id="images/car3.jpg" onclick="change(this)">5</span>
+            <span class="red" id="images/car2.jpg" onclick="change(this)">6</span>
+            <span class="brown" id="images/car1.jpg" onclick="change(this)">7</span>
+        </div>
+        
+        <div>
+            <form>
+                <label class="radio-inline">
+                  <input type="radio" id='auto' name="type" checked onclick="specsTable()">86 2.0 A/T
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" id='manual' name="type" onclick="specsTable()">86 2.0 M/T
+                </label>
+              </form>
+        </div>
+        <div id="quantity_price">
+            <form>
+                <label class="quantity-inline">
+                  Quantity: <input type="number" id='quantity' name="quantity" checked onclick="compute_price()" min="1" max="999" value="1">
+                </label>
+                <label class="price-inline">
+                  Price: <input type="text" id='price' name="price" readonly>
+                </label>
+              </form>
+        </div>
+        <div id="specs_table">
+        </div>
+    </div>
+    <div class="button_container">
+        <button onclick="topFunction()" id="totop" title="Go to top">Top</button>
+    </div>
+    <div id="result"/>
+    <div class="footer">
+        <h5>
+            By: Areola, Eligio
+        </h5>
+    </div>
+    <script src="Eligio.js"></script>
+</body>
+
+</html>
